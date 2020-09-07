@@ -1,0 +1,7 @@
+{
+  "name": "task-manager-front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "jsksru <mail@jsks.ru>",
+  "license": "MIT"
+}
