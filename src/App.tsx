@@ -4,20 +4,7 @@ import NewTask from './components/NewTask/NewTask';
 import { Tasks, Status } from './store/types/TaskTypes';
 
 const tasks: Tasks = [
-  {
-    id: '101',
-    title: 'Task 1',
-    started: new Date(),
-    expire: new Date(),
-    status: Status.STARTED
-  },
-  {
-    id: '102',
-    title: 'Task 2',
-    started: new Date(),
-    expire: new Date(),
-    status: Status.INPROCESS
-  }
+  
 ];
 
 const App = () => {
@@ -25,7 +12,7 @@ const App = () => {
     <>
       <NewTask />
       <hr/>
-      <TaskList tasks={tasks} isLoading={false}/>
+      <TaskList/>
     </>
   );
 }
