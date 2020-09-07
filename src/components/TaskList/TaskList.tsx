@@ -1,13 +1,14 @@
 import React from 'react';
-import { Tasks } from '../../store/types/TaskTypes';
+import moment from 'moment';
+import { Tasks, TaskState } from '../../store/types/TaskTypes';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/types';
 
-interface TaskProps {
-  tasks: Tasks,
-  isLoading: boolean
-}
+moment.locale('ru');
 
-const TaskList = (props: TaskProps) => {
-  const { tasks, isLoading } = props;
+const TaskList = () => {
+  const tasks: Tasks = useSelector( (state: RootState) => state.TaskReducer.tasks);
+  const isLoading: boolean = useSelector( (state: RootState) => state.TaskReducer.isLoading);
 
   const loading = (
     <div>
@@ -17,7 +18,7 @@ const TaskList = (props: TaskProps) => {
 
   const tasksList = (
     <ul>
-      { tasks.map(task => <li key={task.id}>{task.title}</li>) }
+      { tasks.map(task => <li key={task.id}>{task.title} exp: {moment(task.expire).format('D MMMM YYYY в H:mm')} status: {task.status}</li>) }
     </ul>
   );
 

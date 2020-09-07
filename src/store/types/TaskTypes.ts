@@ -16,10 +16,8 @@ export type Task = {
 export type Tasks = Task[];
 
 export interface TaskState {
-  tasks: {
-    list: Tasks,
-    isLoading: boolean
-  }
+  tasks: Tasks,
+  isLoading: boolean
 }
 
 export type NewTask = {
