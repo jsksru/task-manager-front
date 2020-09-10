@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import { Tasks, TaskState } from '../../store/types/TaskTypes';
+import { Tasks } from '../../store/types/TaskTypes';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/types';
+import { getStatus } from '../../utils/functions';
 
 moment.locale('ru');
 
@@ -18,7 +19,7 @@ const TaskList = () => {
 
   const tasksList = (
     <ul>
-      { tasks.map(task => <li key={task.id}>{task.title} exp: {moment(task.expire).format('D MMMM YYYY в H:mm')} status: {task.status}</li>) }
+      { tasks.map(task => <li key={task.id}>{task.title} exp: {moment(task.expire).format('D MMMM YYYY в H:mm')} status: {getStatus(task.status)}</li>) }
     </ul>
   );
 
