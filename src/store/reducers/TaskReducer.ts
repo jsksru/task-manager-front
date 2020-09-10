@@ -1,5 +1,5 @@
-import { TaskState, Status } from '../types/taskTypes';
-import { ADD_TASK, REMOVE_TASK } from '../constants/taskConstants';
+import { TaskState, Status } from '../types/TaskTypes';
+import { ADD_TASK, REMOVE_TASK } from '../constants/TaskConstants';
 
 let counter = 100;
 
