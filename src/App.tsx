@@ -1,18 +1,18 @@
 import React from 'react';
+import TopBar from './components/TopBar/TopBar';
 import TaskList from './components/TaskList/TaskList';
 import NewTask from './components/NewTask/NewTask';
-import { Tasks, Status } from './store/types/TaskTypes';
 
-const tasks: Tasks = [
-  
-];
+import Container from '@material-ui/core/Container';
 
 const App = () => {
   return (
     <>
-      <NewTask />
-      <hr/>
-      <TaskList/>
+      <TopBar />
+      <Container>
+        <NewTask />
+        <TaskList />
+      </Container>
     </>
   );
 }
