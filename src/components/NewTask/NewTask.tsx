@@ -50,7 +50,7 @@ const NewTask = () => {
 
   return (
     <>
-    <Button variant="outlined" color="primary" onClick={handleClickOpen}>Добавить задачу</Button>
+    <Button variant="contained" color="primary" size="large" onClick={handleClickOpen}>Добавить задачу</Button>
     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" scroll="body" TransitionComponent={Fade}>
       <DialogTitle id="form-dialog-title">Новая задача</DialogTitle>
       <DialogContent>
@@ -74,12 +74,14 @@ const NewTask = () => {
         </Box>
       </DialogContent>
       <DialogActions>
+        <Box padding={2}>
         <Button onClick={handleClose}>
           Отмена
         </Button>
         <Button onClick={addTaskHandler} color="primary" variant="contained">
           Добавить
         </Button>
+        </Box>
       </DialogActions>
     </Dialog>
     </>
