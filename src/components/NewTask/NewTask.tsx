@@ -90,12 +90,12 @@ const NewTask = () => {
       </DialogContent>
       <DialogActions>
         <Box padding={2}>
-        <Button onClick={handleCancel}>
-          Отмена
-        </Button>
-        <Button onClick={addTaskHandler} color="primary" variant="contained">
-          Добавить
-        </Button>
+          <Button onClick={handleCancel}>
+            Отмена
+          </Button>
+          <Button onClick={addTaskHandler} color="primary" variant="contained">
+            Добавить
+          </Button>
         </Box>
       </DialogActions>
     </Dialog>
