@@ -15,16 +15,18 @@ import Fade from '@material-ui/core/Fade';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
-interface NewTask {
-  taskTitle: string
-}
-
 const NewTask = () => {
   const [ taskTitle, setTaskTitle ] = useState('');
   const [ open, setOpen ] = useState(false);
   const [ inputError, setinputError] = useState(false);
   const [ taskExpire, setTaskExpire ] = useState<Date | null>(new Date());
   const dispatch = useDispatch();
+
+  const resetForm = (): void => {
+    setTaskTitle('');
+    setTaskExpire(new Date());
+    setinputError(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,19 +36,32 @@ const NewTask = () => {
     setOpen(false);
   };
 
+  const handleCancel = () => {
+    resetForm();
+    setOpen(false);
+  };
+
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    if (inputValue === '') {
+      setinputError(true);
+    } else {
+      setinputError(false);
+    }
+    setTaskTitle(inputValue);
+  };
+
   const addTaskHandler = () => {
 
     if (taskTitle.length === 0) {
       setinputError(true);
     } else {
-      setinputError(false);
       dispatch(addTask(taskTitle, taskExpire));
-      setTaskTitle('');
-      setTaskExpire(new Date());
+      resetForm();
       setOpen(false);
     }
     
-  }
+  };
 
   return (
     <>
@@ -62,7 +77,7 @@ const NewTask = () => {
                      required
                      variant="filled"
                      label="Что нужно зделать?"
-                     value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)}
+                     value={taskTitle} onChange={inputHandler}
                      error={inputError}
           />
           {inputError && <FormHelperText error={inputError}>Это обязательное поле !</FormHelperText>}
@@ -75,7 +90,7 @@ const NewTask = () => {
       </DialogContent>
       <DialogActions>
         <Box padding={2}>
-        <Button onClick={handleClose}>
+        <Button onClick={handleCancel}>
           Отмена
         </Button>
         <Button onClick={addTaskHandler} color="primary" variant="contained">
