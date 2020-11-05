@@ -1,5 +1,5 @@
 import { TaskState, Status } from '../types/TaskTypes';
-import { ADD_TASK, REMOVE_TASK } from '../constants/TaskConstants';
+import { ADD_TASK, REMOVE_TASK, CHANGE_TASK } from '../constants/TaskConstants';
 
 let counter = 100;
 
@@ -46,6 +46,21 @@ export const TaskReducer = (state: TaskState = initialState, action: any) => {
       return {
         ...state,
         tasks: state.tasks.filter(item => item.id !== action.payload.id),
+      };
+    }
+
+    case CHANGE_TASK: {
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks.filter(item => item.id !== action.payload.id),
+          {
+            ...state.tasks.find(item => item.id === action.payload.id),
+            title: action.payload.title,
+            expire: action.payload.expire,
+            status: action.payload.status,
+          }
+        ]
       };
     }
 

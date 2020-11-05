@@ -1,4 +1,5 @@
-import { ADD_TASK, REMOVE_TASK } from '../constants/TaskConstants';
+import { Status } from './../types/TaskTypes';
+import { ADD_TASK, REMOVE_TASK, CHANGE_TASK } from '../constants/TaskConstants';
 
 export const addTask = (title: string, expire: Date | null) => {
   return {
@@ -15,6 +16,18 @@ export const removeTask = (id: string) => {
     type: REMOVE_TASK,
     payload: {
       id
+    }
+  };
+};
+
+export const changeTask = (id: string, title: string, expire: Date, status: Status) => {
+  return {
+    type: CHANGE_TASK,
+    payload: {
+      id,
+      title,
+      expire,
+      status
     }
   };
 };
