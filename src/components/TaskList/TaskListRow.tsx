@@ -31,7 +31,7 @@ const TaskListRow: React.FunctionComponent<RowProps> = (props: RowProps) => {
         <Chip label={getStatus(status)} />
       </TableCell>
       <TableCell align="right">
-        <EditTaskButton id={id}/>
+        <EditTaskButton id={id} title={title} expire={expire} status={status}/>
         <RemoveTaskButton id={id} />
       </TableCell>
     </TableRow>

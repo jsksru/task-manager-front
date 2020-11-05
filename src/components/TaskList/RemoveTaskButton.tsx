@@ -10,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Box from '@material-ui/core/Box';
+import Tooltip from '@material-ui/core/Tooltip';
 
 interface RemoveTaskProps {
   id: string
@@ -35,9 +36,11 @@ export const RemoveTaskButton: React.FunctionComponent<RemoveTaskProps> = ({ id 
 
   return (
     <>
-      <IconButton color="secondary" size="small" aria-label="Delete this record" component="button" onClick={openDialogHandler}>
-        <DeleteIcon />
-      </IconButton>
+      <Tooltip title="Delete" aria-label="Delete" arrow placement="right">
+        <IconButton color="secondary" size="small" aria-label="Delete this record" component="button" onClick={openDialogHandler}>
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
       <Dialog open={confirmOpen}
               onClose={closeDialogHandler}
               aria-labelledby="alert-dialog-title"
